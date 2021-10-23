@@ -1,3 +1,41 @@
+TODO
+
+Logo with icon and text
+
+choose size from a drop down menu or squares too
+
+toggle pen or bucket
+
+selected should be updated as well
+
+color palette (Paint bucket / fill tool
+Fills in neighboring pixels whose color value corresponds to the pixels you click on)
+
+download image button with options Download option (JPG / PNG / GIF) or 3 buttons or just name ending
+
+media query where they are diplayed as block one obove the other
+
+fulfill this in readme
+https://github.com/UDG-United-Digital-Group/frontend-junior-code-challenge-3/blob/master/Task%20Result.md
+
+check all their general requirements in the file if met
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
