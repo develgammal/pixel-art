@@ -1,18 +1,21 @@
 import StyledGrid from "./styles/Grid.styled";
 import Row from "../components/Row";
 
-function Grid() {
+function Grid({ size, pixelColor }) {
   let rows = [];
-  let size = 8;
-  let pixelColor = "red";
 
   for (let i = 0; i < size; i++) {
-    rows.push(<Row key={i} size={size} pixelColor={pixelColor} />);
+    rows.push(<Row columnId={i} key={i} size={size} pixelColor={pixelColor} />);
   }
 
   return (
     <StyledGrid>
-      <main>{rows}</main>
+      <div className="Grid-wrapper">
+        <aside>
+          {size}x{size}
+        </aside>
+        <main>{rows}</main>
+      </div>
     </StyledGrid>
   );
 }

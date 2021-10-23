@@ -33,19 +33,26 @@ const StyledParams = styled.div`
     margin: 2px;
     border-radius: 10px;
   }
-
   .color-selector {
     display: flex;
-  }
-
-  .selected-color {
-    margin: 0 20px;
   }
 
   .displayed-color {
     width: 50px;
     height: 50px;
-    background-color: white;
+    background-color: ${(props) => props.pixelColor};
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+  .selected-color {
+    margin: 0 20px;
+  }
+  .eraser {
+    margin-top: 20px;
+  }
+
+  .download {
+    margin-top: 20px;
   }
 `;
 
