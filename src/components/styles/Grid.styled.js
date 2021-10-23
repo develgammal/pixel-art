@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 const StyledParams = styled.div`
   main {
-    width: 40vw;
-    height: 40vw; //TODO
-    border: 10px solid;
+    display: flex;
+    border: 1px solid;
     margin: 50px 0 0 100px;
   }
 `;

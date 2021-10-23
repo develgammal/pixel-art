@@ -1,4 +1,10 @@
-TODO
+//TODO
+
+the tools hook sets mouse course as well but only inside the grid so it should get props from above and universally they should
+be highleted with a border n they should have default state values
+............................
+onHover would be cool
+maybe cleaner reset that sets the inner div color
 
 Logo with icon and text
 
@@ -11,14 +17,29 @@ selected should be updated as well
 color palette (Paint bucket / fill tool
 Fills in neighboring pixels whose color value corresponds to the pixels you click on)
 
-download image button with options Download option (JPG / PNG / GIF) or 3 buttons or just name ending
+react component export image with useref
+.
+.
+.
+.
+.
 
 media query where they are diplayed as block one obove the other
+
+switch ur css to from styled to normal? uninstalling css or state it as a personal preference because changes are scoped n so on
+
+check console n todos n comment ur code well
+
+read ur build dependencies n explain each one of them
 
 fulfill this in readme
 https://github.com/UDG-United-Digital-Group/frontend-junior-code-challenge-3/blob/master/Task%20Result.md
 
 check all their general requirements in the file if met
+
+pin repo n make it public
+
+after sending cv, put it in new cv
 
 .
 .

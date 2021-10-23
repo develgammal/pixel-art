@@ -33,11 +33,6 @@ const StyledParams = styled.div`
     margin: 2px;
     border-radius: 10px;
   }
-  .color-palette button {
-    width: 40px;
-    height: 40px;
-    margin: 1px;
-  }
 
   .color-selector {
     display: flex;

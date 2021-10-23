@@ -1,11 +1,13 @@
 import StyledParams from "./styles/Params.styled";
 import Grid from "../components/Grid";
+import { CirclePicker } from "react-color";
 
 //img imports
 import logoImg from "../img/logo.png";
 import penImg from "../img/pen.png";
 import bucketImg from "../img/bucket.png";
 import paletteImg from "../img/palette.png";
+import eraserImg from "../img/eraser.svg";
 
 function Params() {
   return (
@@ -32,22 +34,12 @@ function Params() {
             <button>
               <img src={penImg} alt="pen" width="40px" />
             </button>
+            <button>
+              <img src={eraserImg} alt="eraser" width="40px" />
+            </button>
           </section>
           <section className="color-selector">
-            <div className="color-palette">
-              <button style={{ backgroundColor: "red" }}></button>
-              <button style={{ backgroundColor: "purple" }}></button>
-              <button style={{ backgroundColor: "green" }}></button>
-              <button style={{ backgroundColor: "blue" }}></button>
-              <button style={{ backgroundColor: "yellow " }}></button>
-              <button style={{ backgroundColor: "orange" }}></button>
-              <button style={{ backgroundColor: "white" }}></button>
-              <button style={{ backgroundColor: "black" }}></button>
-              <button style={{ backgroundColor: "papayawhip" }}></button>
-              <button style={{ backgroundColor: "pink" }}></button>
-              <button style={{ backgroundColor: "brown" }}></button>
-              <button style={{ backgroundColor: "cyan" }}></button>
-            </div>
+            <CirclePicker />
             <div className="selected-color">
               <img src={paletteImg} alt="palette" width="50px" />
               <div className="displayed-color">
