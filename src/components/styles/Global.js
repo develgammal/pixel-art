@@ -7,7 +7,6 @@ const GlobalStyles = createGlobalStyle`
   width: 100%;
   height: 100vh;
 }
-
 //reset & body css
 html {
   box-sizing: border-box;

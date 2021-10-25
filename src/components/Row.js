@@ -1,18 +1,10 @@
-import Pixel from "../components/Pixel";
+import Pixel from "./Pixel";
 
-function Row({ size, pixelColor, columnId }) {
+function Row({ size, pixelColor }) {
   let columns = [];
 
   for (let i = 0; i < size; i++) {
-    columns.push(
-      <Pixel
-        rowId={i}
-        key={i}
-        columnId={columnId}
-        size={size}
-        pixelColor={pixelColor}
-      />
-    );
+    columns.push(<Pixel key={i} size={size} pixelColor={pixelColor} />);
   }
 
   return <div>{columns}</div>;

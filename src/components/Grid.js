@@ -1,5 +1,5 @@
+import Row from "./Row";
 import StyledGrid from "./styles/Grid.styled";
-import Row from "../components/Row";
 
 function Grid({ size, pixelColor }) {
   let rows = [];
@@ -10,7 +10,7 @@ function Grid({ size, pixelColor }) {
 
   return (
     <StyledGrid>
-      <div className="Grid-wrapper">
+      <div className="grid-wrapper">
         <aside>
           {size}x{size}
         </aside>
@@ -19,5 +19,4 @@ function Grid({ size, pixelColor }) {
     </StyledGrid>
   );
 }
-
 export default Grid;

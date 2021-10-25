@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
-const StyledParams = styled.div`
-  .Grid-wrapper {
+const StyledGrid = styled.div`
+  .grid-wrapper {
     margin: 20px 0 0 100px;
   }
   main {
     display: flex;
     border: 1px solid;
+    cursor: pointer;
   }
 `;
 
-export default StyledParams;
+export default StyledGrid;

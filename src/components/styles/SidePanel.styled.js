@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-const StyledParams = styled.div`
-  .params-wrapper {
+const StyledSidePanel = styled.div`
+  .panel-wrapper {
     display: flex;
     flex-flow: column nowrap;
     background-color: whitesmoke;
-    width: 30vw; //TODO
+    width: 30vw;
     padding: 20px;
     margin: 20px;
     border-radius: 20px;
@@ -15,17 +15,21 @@ const StyledParams = styled.div`
   section {
     margin: 10px 0;
   }
+
   header {
     display: flex;
     margin: 20px 0;
   }
+
   h1 {
     font-family: "Nova Square", cursive;
     font-weight: 800;
   }
+
   a {
-    width: 55px;
+    font-size: 2rem;
   }
+
   a,
   button {
     background-color: white;
@@ -44,9 +48,11 @@ const StyledParams = styled.div`
     border-radius: 50%;
     margin-left: 10px;
   }
+
   .selected-color {
     margin: 0 20px;
   }
+
   .eraser {
     margin-top: 20px;
   }
@@ -56,4 +62,4 @@ const StyledParams = styled.div`
   }
 `;
 
-export default StyledParams;
+export default StyledSidePanel;
