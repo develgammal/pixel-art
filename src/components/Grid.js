@@ -1,10 +1,17 @@
 import Row from "./Row";
 import StyledGrid from "./styles/Grid.styled";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
-function Grid({ size, pixelColor }) {
-  const [coordinates, setCoordinates] = useState({});
+function Grid({ size, pixelColor, initialMatrix }) {
+  const [coordinates, setCoordinates] = useState(null);
   console.log("coordinates", coordinates);
+
+  const matrix = useRef([...initialMatrix]);
+
+  coordinates !== null &&
+    (matrix.current[coordinates.x][coordinates.y] = pixelColor);
+
+  console.log("matrix", matrix);
 
   let rows = [];
 

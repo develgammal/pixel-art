@@ -12,8 +12,7 @@ import logoImg from "../img/logo.png";
 import paletteImg from "../img/palette.png";
 import eraserImg from "../img/eraser.svg";
 
-function SidePanel() {
-  const [size, setSize] = useState(8);
+function SidePanel({ size, setSize, initialMatrix }) {
   const [pixelColor, setPixelColor] = useState("#ffffff");
   const GridEl = useRef(null);
 
@@ -67,7 +66,11 @@ function SidePanel() {
         </div>
       </StyledSidePanel>
       <div ref={GridEl}>
-        <Grid size={size} pixelColor={pixelColor} />
+        <Grid
+          initialMatrix={initialMatrix}
+          size={size}
+          pixelColor={pixelColor}
+        />
       </div>
     </div>
   );

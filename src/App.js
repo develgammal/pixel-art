@@ -1,11 +1,11 @@
 import GlobalStyles from "./components/styles/Global.js";
-import SidePanel from "./components/SidePanel.js";
+import SizeControl from "./components/SizeControl.js";
 
 function App() {
   return (
     <div>
       <GlobalStyles />
-      <SidePanel />
+      <SizeControl />
     </div>
   );
 }

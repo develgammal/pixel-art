@@ -10,7 +10,7 @@ function Pixel({ size, pixelColor, rowId, columnId, setCoordinates }) {
         <div
           onClick={() => {
             setNewColor(pixelColor);
-            setCoordinates({ x: rowId, y: columnId, c: pixelColor });
+            setCoordinates({ y: rowId, x: columnId });
           }}
         ></div>
       </StyledPixel>
