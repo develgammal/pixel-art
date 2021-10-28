@@ -1,44 +1,12 @@
 import Row from "./Row";
 import StyledGrid from "./styles/Grid.styled";
-import { useState, useReducer, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
-function reducer(state, action) {
-  let mDraft = [...action.m];
-
-  switch (action.type) {
-    case "topFill":
-      mDraft[action.x - 1] !== undefined &&
-        mDraft[action.x - 1][action.y] === action.oldColor &&
-        (mDraft[action.x - 1][action.y] = action.pixelColor);
-      return mDraft;
-
-    case "buttomFill":
-      mDraft[action.x + 1] !== undefined &&
-        mDraft[action.x + 1][action.y] === action.oldColor &&
-        (mDraft[action.x + 1][action.y] = action.pixelColor);
-      return mDraft;
-
-    case "leftFill":
-      mDraft[action.x] !== undefined &&
-        mDraft[action.x][action.y - 1] === action.oldColor &&
-        (mDraft[action.x][action.y - 1] = action.pixelColor);
-      return mDraft;
-
-    case "rightFill":
-      mDraft[action.x] !== undefined &&
-        mDraft[action.x][action.y + 1] === action.oldColor &&
-        (mDraft[action.x][action.y + 1] = action.pixelColor);
-      return mDraft;
-
-    default:
-      return state;
-  }
-}
 function Grid({ size, pixelColor, initialMatrix }) {
   const [coordinates, setCoordinates] = useState(null);
-  const [matrix, dispatch] = useReducer(reducer, [...initialMatrix]);
-
-  // const fillNodes = useRef([]);
+  const [matrix, setMatrix] = useState([...initialMatrix]);
+  const coolFillToggle = useRef(false);
+  const FillToggle = useRef(false);
 
   useEffect(() => {
     if (coordinates !== null) {
@@ -46,44 +14,47 @@ function Grid({ size, pixelColor, initialMatrix }) {
       const y = coordinates.y;
       const m = matrix;
       const oldColor = m[x][y];
-      m[x][y] = pixelColor;
-      dispatch({
-        type: "leftFill",
-        x: x,
-        y: y,
-        m: m,
-        pixelColor: pixelColor,
-        oldColor: oldColor,
-        size: size,
-      });
-      dispatch({
-        type: "rightFill",
-        x: x,
-        y: y,
-        m: m,
-        pixelColor: pixelColor,
-        oldColor: oldColor,
-        size: size,
-      });
-      dispatch({
-        type: "topFill",
-        x: x,
-        y: y,
-        m: m,
-        pixelColor: pixelColor,
-        oldColor: oldColor,
-        size: size,
-      });
-      dispatch({
-        type: "buttomFill",
-        x: x,
-        y: y,
-        m: m,
-        pixelColor: pixelColor,
-        oldColor: oldColor,
-        size: size,
-      });
-      console.log("matrix", m);
+      let mDraft = [...m];
+
+      mDraft[x][y] = pixelColor;
+
+      if (FillToggle.current === true) {
+      }
+
+      if (coolFillToggle.current === true) {
+        function halfFill(r) {
+          function quarterFill(y) {
+            mDraft[r] !== undefined &&
+              mDraft[r][y] === oldColor &&
+              (mDraft[r][y] = pixelColor);
+            return mDraft;
+          }
+          // fill left
+          for (let i = y - 1; i >= 0; i--) {
+            if (mDraft[x] === undefined && mDraft[x][i] !== oldColor) break;
+            quarterFill(i);
+          }
+          // fill right
+          for (let i = y; i < size; i++) {
+            if (mDraft[x] === undefined && mDraft[x][i] !== oldColor) break;
+            quarterFill(i);
+          }
+        }
+        // fill bottom
+        for (let r = x; r < size; r++) {
+          if (mDraft[r] === undefined && mDraft[r][y] !== oldColor) break;
+          halfFill(r);
+        }
+        // fill Top
+        for (let r = x; r >= 0; r--) {
+          if (mDraft[r] === undefined && mDraft[r][y] !== oldColor) break;
+          halfFill(r);
+        }
+      }
+
+      setMatrix(mDraft);
+
+      console.log("matrix", m); //TODO
     }
   }, [coordinates]);
 
@@ -93,6 +64,7 @@ function Grid({ size, pixelColor, initialMatrix }) {
     rows.push(
       <Row
         setCoordinates={setCoordinates}
+        matrix={matrix}
         rowId={i}
         key={i}
         size={size}
@@ -104,6 +76,20 @@ function Grid({ size, pixelColor, initialMatrix }) {
   return (
     <StyledGrid>
       <div className="grid-wrapper">
+        <button
+          onClick={() => {
+            coolFillToggle.current = !coolFillToggle.current;
+          }}
+        >
+          Cool: {JSON.stringify(coolFillToggle.current)}
+        </button>
+        <button
+          onClick={() => {
+            FillToggle.current = !FillToggle.current;
+          }}
+        >
+          Normal: {JSON.stringify(FillToggle.current)}
+        </button>
         <aside>
           {size}x{size}
         </aside>

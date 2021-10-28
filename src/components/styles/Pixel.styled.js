@@ -5,6 +5,7 @@ const StyledPixel = styled.div`
     width: calc(40vw / ${(props) => props.size});
     height: calc(40vw / ${(props) => props.size});
     background-color: ${(props) => props.newColor};
+    background-color: ${(props) => props.matrixRender};
     border: 1px solid;
   }
   div:hover {

@@ -1,12 +1,17 @@
 import StyledPixel from "./styles/Pixel.styled";
 import { useState } from "react";
 
-function Pixel({ size, pixelColor, rowId, columnId, setCoordinates }) {
+function Pixel({ size, pixelColor, rowId, columnId, setCoordinates, matrix }) {
   const [newColor, setNewColor] = useState("#ffffff");
 
   return (
     <>
-      <StyledPixel size={size} pixelColor={pixelColor} newColor={newColor}>
+      <StyledPixel
+        size={size}
+        pixelColor={pixelColor}
+        newColor={newColor}
+        matrixRender={matrix[columnId][rowId]}
+      >
         <div
           onClick={() => {
             setNewColor(pixelColor);
