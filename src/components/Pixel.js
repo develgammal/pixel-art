@@ -32,3 +32,12 @@ export default Pixel;
 //       .getComputedStyle(divEl.current, null)
 //       .getPropertyValue("background-color")
 //   );
+//
+//
+//
+//
+//
+//
+//
+
+//  TODO

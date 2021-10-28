@@ -1,32 +1,33 @@
 import Row from "./Row";
 import StyledGrid from "./styles/Grid.styled";
-import { useState, useReducer, useEffect } from "react";
+import { useState, useReducer, useEffect, useRef } from "react";
 
 function reducer(state, action) {
   let mDraft = [...action.m];
+
   switch (action.type) {
-    case "downFill":
-      mDraft[action.x] !== undefined &&
-        mDraft[action.x][action.y - 1] !== undefined &&
-        (mDraft[action.x][action.y - 1] = action.pixelColor);
-      return mDraft;
-
-    case "upFill":
-      mDraft[action.x] !== undefined &&
-        mDraft[action.x][action.y + 1] !== undefined &&
-        (mDraft[action.x][action.y + 1] = action.pixelColor);
-      return mDraft;
-
-    case "leftFill":
+    case "topFill":
       mDraft[action.x - 1] !== undefined &&
-        mDraft[action.x - 1][action.y] !== undefined &&
+        mDraft[action.x - 1][action.y] === action.oldColor &&
         (mDraft[action.x - 1][action.y] = action.pixelColor);
       return mDraft;
 
-    case "rightFill":
+    case "buttomFill":
       mDraft[action.x + 1] !== undefined &&
-        mDraft[action.x + 1][action.y] !== undefined &&
+        mDraft[action.x + 1][action.y] === action.oldColor &&
         (mDraft[action.x + 1][action.y] = action.pixelColor);
+      return mDraft;
+
+    case "leftFill":
+      mDraft[action.x] !== undefined &&
+        mDraft[action.x][action.y - 1] === action.oldColor &&
+        (mDraft[action.x][action.y - 1] = action.pixelColor);
+      return mDraft;
+
+    case "rightFill":
+      mDraft[action.x] !== undefined &&
+        mDraft[action.x][action.y + 1] === action.oldColor &&
+        (mDraft[action.x][action.y + 1] = action.pixelColor);
       return mDraft;
 
     default:
@@ -37,17 +38,51 @@ function Grid({ size, pixelColor, initialMatrix }) {
   const [coordinates, setCoordinates] = useState(null);
   const [matrix, dispatch] = useReducer(reducer, [...initialMatrix]);
 
+  // const fillNodes = useRef([]);
+
   useEffect(() => {
     if (coordinates !== null) {
       const x = coordinates.x;
       const y = coordinates.y;
       const m = matrix;
-
+      const oldColor = m[x][y];
       m[x][y] = pixelColor;
-      dispatch({ type: "downFill", x: x, y: y, m: m, pixelColor: pixelColor });
-      dispatch({ type: "upFill", x: x, y: y, m: m, pixelColor: pixelColor });
-      dispatch({ type: "leftFill", x: x, y: y, m: m, pixelColor: pixelColor });
-      dispatch({ type: "rightFill", x: x, y: y, m: m, pixelColor: pixelColor });
+      dispatch({
+        type: "leftFill",
+        x: x,
+        y: y,
+        m: m,
+        pixelColor: pixelColor,
+        oldColor: oldColor,
+        size: size,
+      });
+      dispatch({
+        type: "rightFill",
+        x: x,
+        y: y,
+        m: m,
+        pixelColor: pixelColor,
+        oldColor: oldColor,
+        size: size,
+      });
+      dispatch({
+        type: "topFill",
+        x: x,
+        y: y,
+        m: m,
+        pixelColor: pixelColor,
+        oldColor: oldColor,
+        size: size,
+      });
+      dispatch({
+        type: "buttomFill",
+        x: x,
+        y: y,
+        m: m,
+        pixelColor: pixelColor,
+        oldColor: oldColor,
+        size: size,
+      });
       console.log("matrix", m);
     }
   }, [coordinates]);
@@ -78,3 +113,5 @@ function Grid({ size, pixelColor, initialMatrix }) {
   );
 }
 export default Grid;
+
+//TODO possible bug on resizing
