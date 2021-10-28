@@ -5,8 +5,8 @@ import { useState, useEffect, useRef } from "react";
 function Grid({ size, pixelColor, initialMatrix }) {
   const [coordinates, setCoordinates] = useState(null);
   const [matrix, setMatrix] = useState([...initialMatrix]);
-  const coolFillToggle = useRef(false);
   const FillToggle = useRef(false);
+  const magicFillToggle = useRef(false);
 
   useEffect(() => {
     if (coordinates !== null) {
@@ -19,9 +19,47 @@ function Grid({ size, pixelColor, initialMatrix }) {
       mDraft[x][y] = pixelColor;
 
       if (FillToggle.current === true) {
+        // top  Fill
+        mDraft[x - 1] !== undefined &&
+          mDraft[x - 1][y] === oldColor &&
+          (mDraft[x - 1][y] = pixelColor);
+
+        // top right Fill
+        mDraft[x - 1] !== undefined &&
+          mDraft[x - 1][y + 1] === oldColor &&
+          (mDraft[x - 1][y + 1] = pixelColor);
+
+        // top left Fill
+        mDraft[x - 1] !== undefined &&
+          mDraft[x - 1][y - 1] === oldColor &&
+          (mDraft[x - 1][y - 1] = pixelColor);
+
+        // buttom Fill
+        mDraft[x + 1] !== undefined &&
+          mDraft[x + 1][y] === oldColor &&
+          (mDraft[x + 1][y] = pixelColor);
+
+        // buttom left Fill
+        mDraft[x + 1] !== undefined &&
+          mDraft[x + 1][y - 1] === oldColor &&
+          (mDraft[x + 1][y - 1] = pixelColor);
+        // buttom right Fill
+        mDraft[x + 1] !== undefined &&
+          mDraft[x + 1][y + 1] === oldColor &&
+          (mDraft[x + 1][y + 1] = pixelColor);
+
+        // left Fill
+        mDraft[x] !== undefined &&
+          mDraft[x][y - 1] === oldColor &&
+          (mDraft[x][y - 1] = pixelColor);
+
+        // right Fill
+        mDraft[x] !== undefined &&
+          mDraft[x][y + 1] === oldColor &&
+          (mDraft[x][y + 1] = pixelColor);
       }
 
-      if (coolFillToggle.current === true) {
+      if (magicFillToggle.current === true) {
         function halfFill(r) {
           function quarterFill(y) {
             mDraft[r] !== undefined &&
@@ -78,10 +116,10 @@ function Grid({ size, pixelColor, initialMatrix }) {
       <div className="grid-wrapper">
         <button
           onClick={() => {
-            coolFillToggle.current = !coolFillToggle.current;
+            magicFillToggle.current = !magicFillToggle.current;
           }}
         >
-          Cool: {JSON.stringify(coolFillToggle.current)}
+          Cool: {JSON.stringify(magicFillToggle.current)}
         </button>
         <button
           onClick={() => {
