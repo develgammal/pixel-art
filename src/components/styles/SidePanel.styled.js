@@ -37,8 +37,18 @@ const StyledSidePanel = styled.div`
     margin: 2px;
     border-radius: 10px;
   }
+
+  .${(props) => props.activeSelection} {
+    border: 10px solid white;
+    border-radius: 10px;
+    background-color: white;
+  }
   .color-selector {
     display: flex;
+  }
+
+  .eraser {
+    width: 70px;
   }
 
   .displayed-color {
@@ -51,10 +61,6 @@ const StyledSidePanel = styled.div`
 
   .selected-color {
     margin: 0 20px;
-  }
-
-  .eraser {
-    margin-top: 20px;
   }
 
   .download {

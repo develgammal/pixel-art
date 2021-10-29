@@ -1,12 +1,16 @@
 import Row from "./Row";
 import StyledGrid from "./styles/Grid.styled";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
-function Grid({ size, pixelColor, initialMatrix }) {
+function Grid({
+  size,
+  pixelColor,
+  initialMatrix,
+  fillToggle,
+  magicFillToggle,
+}) {
   const [coordinates, setCoordinates] = useState(null);
   const [matrix, setMatrix] = useState([...initialMatrix]);
-  const FillToggle = useRef(false);
-  const magicFillToggle = useRef(false);
 
   useEffect(() => {
     if (coordinates !== null) {
@@ -18,7 +22,7 @@ function Grid({ size, pixelColor, initialMatrix }) {
 
       mDraft[x][y] = pixelColor;
 
-      if (FillToggle.current === true) {
+      if (fillToggle === true) {
         // top  Fill
         mDraft[x - 1] !== undefined &&
           mDraft[x - 1][y] === oldColor &&
@@ -59,7 +63,7 @@ function Grid({ size, pixelColor, initialMatrix }) {
           (mDraft[x][y + 1] = pixelColor);
       }
 
-      if (magicFillToggle.current === true) {
+      if (magicFillToggle === true) {
         function halfFill(r) {
           function quarterFill(y) {
             mDraft[r] !== undefined &&
@@ -114,20 +118,6 @@ function Grid({ size, pixelColor, initialMatrix }) {
   return (
     <StyledGrid>
       <div className="grid-wrapper">
-        <button
-          onClick={() => {
-            magicFillToggle.current = !magicFillToggle.current;
-          }}
-        >
-          Cool: {JSON.stringify(magicFillToggle.current)}
-        </button>
-        <button
-          onClick={() => {
-            FillToggle.current = !FillToggle.current;
-          }}
-        >
-          Normal: {JSON.stringify(FillToggle.current)}
-        </button>
         <aside>
           {size}x{size}
         </aside>
