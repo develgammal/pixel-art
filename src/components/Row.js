@@ -6,13 +6,13 @@ function Row({ size, pixelColor, rowId, setCoordinates, matrix }) {
   for (let i = 0; i < size; i++) {
     columns.push(
       <Pixel
-        setCoordinates={setCoordinates}
+        size={size}
+        pixelColor={pixelColor}
         matrix={matrix}
+        setCoordinates={setCoordinates}
         rowId={rowId}
         columnId={i}
         key={i}
-        size={size}
-        pixelColor={pixelColor}
       />
     );
   }

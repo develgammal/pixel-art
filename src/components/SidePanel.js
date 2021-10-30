@@ -15,30 +15,21 @@ import bucketImg from "../img/bucket.png";
 import magicImg from "../img/magic.png";
 import eraserImg from "../img/eraser.svg";
 
-function SidePanel({ size, setSize, initialMatrix }) {
-  const [pixelColor, setPixelColor] = useState("#ffffff");
+function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
   const [fillToggle, setFillToggle] = useState(false);
-  const [magicFillToggle, setMagicFillToggle] = useState(false);
-  const [activeSelection, setActiveSelection] = useState("pen");
+  const [layerFillToggle, setLayerFillToggle] = useState(false);
+  const [sizesActiveSelection, setSizesActiveSelection] = useState("size8");
+  const [toolsActiveSelection, setToolsActiveSelection] = useState("pen-fill");
+  const [pixelColor, setPixelColor] = useState("#ffffff");
 
   const GridEl = useRef(null);
-  //TODO
 
-  // fix sizing bug maybe by matrix reset n then the reset button is also following same logic just same size
-  // clean code
-  // use context provider
-  // clean all
-  // check todos console n comments
-  // elaborate your code with comments
-  // merge to fill feature branch
-  // push n merge n update readme with gif of two algorithems and how proud you are
-  // show shehata
-  // learn redux
   return (
     <div className="wrapper">
       <StyledSidePanel
         pixelColor={pixelColor}
-        activeSelection={activeSelection}
+        sizesActiveSelection={sizesActiveSelection}
+        toolsActiveSelection={toolsActiveSelection}
       >
         <div className="panel-wrapper">
           <header>
@@ -47,44 +38,84 @@ function SidePanel({ size, setSize, initialMatrix }) {
           </header>
 
           <section>
-            <a href="/">&#128472;</a>
+            <button
+              className="reset"
+              onClick={() => {
+                setSize(8);
+                setMatrix(initialMatrix);
+              }}
+            >
+              &#128472;
+            </button>
           </section>
 
           <section className="grid-size">
-            <button onClick={() => setSize(8)}>8x8</button>
-            <button onClick={() => setSize(12)}>12x12</button>
-            <button onClick={() => setSize(16)}>16x16</button>
-            <button onClick={() => setSize(32)}>32x32</button>
+            <button
+              className="size8"
+              onClick={() => {
+                setSize(8);
+                setSizesActiveSelection("size8");
+              }}
+            >
+              8x8
+            </button>
+            <button
+              className="size12"
+              onClick={() => {
+                setSize(12);
+                setSizesActiveSelection("size12");
+              }}
+            >
+              12x12
+            </button>
+            <button
+              className="size16"
+              onClick={() => {
+                setSize(16);
+                setSizesActiveSelection("size16");
+              }}
+            >
+              16x16
+            </button>
+            <button
+              className="size32"
+              onClick={() => {
+                setSize(32);
+                setSizesActiveSelection("size32");
+              }}
+            >
+              32x32
+            </button>
           </section>
+
           <div className="fill-type">
             <button
-              className="pen"
+              className="pen-fill"
               onClick={() => {
                 setFillToggle(false);
-                setMagicFillToggle(false);
-                setActiveSelection("pen");
+                setLayerFillToggle(false);
+                setToolsActiveSelection("pen-fill");
               }}
             >
               <img src={penImg} alt="pen" width="40px" />
             </button>
 
             <button
-              className="bucket"
+              className="neighbour-fill"
               onClick={() => {
                 setFillToggle(true);
-                setMagicFillToggle(false);
-                setActiveSelection("bucket");
+                setLayerFillToggle(false);
+                setToolsActiveSelection("neighbour-fill");
               }}
             >
               <img src={bucketImg} alt="bucket" width="45px" />
             </button>
-
             <button
-              className="magic"
+              className="Layer-fill"
               onClick={() => {
                 setFillToggle(false);
-                setMagicFillToggle(true);
-                setActiveSelection("magic");
+                setLayerFillToggle(true);
+                setToolsActiveSelection("Layer-fill");
               }}
             >
               <img src={magicImg} alt="magic" width="40px" />
@@ -126,11 +157,13 @@ function SidePanel({ size, setSize, initialMatrix }) {
       </StyledSidePanel>
       <div ref={GridEl}>
         <Grid
-          fillToggle={fillToggle}
-          magicFillToggle={magicFillToggle}
-          initialMatrix={initialMatrix}
           size={size}
+          matrix={matrix}
+          setMatrix={setMatrix}
+          initialMatrix={initialMatrix}
           pixelColor={pixelColor}
+          fillToggle={fillToggle}
+          layerFillToggle={layerFillToggle}
         />
       </div>
     </div>

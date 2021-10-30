@@ -37,8 +37,26 @@ const StyledSidePanel = styled.div`
     margin: 2px;
     border-radius: 10px;
   }
+  button:hover {
+    border: 10px solid white;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .reset {
+    font-size: 2rem;
+  }
+  .reset:hover {
+    background-color: #e91e63;
+    border: 5px solid #e91e63;
+  }
 
-  .${(props) => props.activeSelection} {
+  .${(props) => props.sizesActiveSelection} {
+    font-size: 1.2rem;
+    border: 5px solid white;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .${(props) => props.toolsActiveSelection} {
     border: 10px solid white;
     border-radius: 10px;
     background-color: white;

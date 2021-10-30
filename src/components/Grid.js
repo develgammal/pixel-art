@@ -5,13 +5,14 @@ import { useState, useEffect } from "react";
 function Grid({
   size,
   pixelColor,
-  initialMatrix,
+  matrix,
+  setMatrix,
   fillToggle,
-  magicFillToggle,
+  layerFillToggle,
 }) {
   const [coordinates, setCoordinates] = useState(null);
-  const [matrix, setMatrix] = useState([...initialMatrix]);
 
+  //fill algorithems
   useEffect(() => {
     if (coordinates !== null) {
       const x = coordinates.x;
@@ -22,6 +23,7 @@ function Grid({
 
       mDraft[x][y] = pixelColor;
 
+      //step fill algorithems
       if (fillToggle === true) {
         // top  Fill
         mDraft[x - 1] !== undefined &&
@@ -63,7 +65,9 @@ function Grid({
           (mDraft[x][y + 1] = pixelColor);
       }
 
-      if (magicFillToggle === true) {
+      //layer fill algorithems
+
+      if (layerFillToggle === true) {
         function halfFill(r) {
           function quarterFill(y) {
             mDraft[r] !== undefined &&
@@ -95,22 +99,20 @@ function Grid({
       }
 
       setMatrix(mDraft);
-
-      console.log("matrix", m); //TODO
     }
-  }, [coordinates]);
+  }, [coordinates]); //eslint-disable-line
 
   let rows = [];
 
   for (let i = 0; i < size; i++) {
     rows.push(
       <Row
-        setCoordinates={setCoordinates}
-        matrix={matrix}
-        rowId={i}
-        key={i}
         size={size}
         pixelColor={pixelColor}
+        matrix={matrix}
+        setCoordinates={setCoordinates}
+        rowId={i}
+        key={i}
       />
     );
   }
@@ -118,14 +120,9 @@ function Grid({
   return (
     <StyledGrid>
       <div className="grid-wrapper">
-        <aside>
-          {size}x{size}
-        </aside>
         <main>{rows}</main>
       </div>
     </StyledGrid>
   );
 }
 export default Grid;
-
-//TODO possible bug on resizing

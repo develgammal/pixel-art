@@ -10,7 +10,9 @@ function Pixel({ size, pixelColor, rowId, columnId, setCoordinates, matrix }) {
         size={size}
         pixelColor={pixelColor}
         newColor={newColor}
-        matrixRender={matrix[columnId][rowId]}
+        matrixRender={
+          matrix[columnId] === undefined ? newColor : matrix[columnId][rowId]
+        }
       >
         <div
           onClick={() => {
@@ -24,25 +26,3 @@ function Pixel({ size, pixelColor, rowId, columnId, setCoordinates, matrix }) {
 }
 
 export default Pixel;
-
-// const divEl = useRef(null);
-// console.log("divEl is", divEl);
-
-// ref={divEl}
-
-// divEl.current != null &&
-//   console.log(
-//     "inner color is:",
-//     window
-//       .getComputedStyle(divEl.current, null)
-//       .getPropertyValue("background-color")
-//   );
-//
-//
-//
-//
-//
-//
-//
-
-//  TODO
