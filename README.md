@@ -9,6 +9,18 @@ That's right! nobody in their right mind..
 
 Choose the size of your Pixel Canavas :straight_ruler:, pick your favourite colors :basket:, erase mistakes:scissors: then click download to download your awesome artistic piece in your desired format	:file_cabinet:..
 
+**Box fill tool**
+
+Lets you color neighbouring pixels with the selected color:
+
+<img src="demo2.gif" width="600" />
+
+**Color-match fill tool**
+
+Lets you change background color as well as similar color patterns:
+
+<img src="demo3.gif" width="600" />
+
 # Used technologies / Frameworks
 **javaScript / React.js**
 
