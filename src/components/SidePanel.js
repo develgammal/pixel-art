@@ -16,8 +16,8 @@ import magicImg from "../img/magic.png";
 import eraserImg from "../img/eraser.svg";
 
 function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
-  const [fillToggle, setFillToggle] = useState(false);
-  const [layerFillToggle, setLayerFillToggle] = useState(false);
+  const [boxFillToggle, setBoxFillToggle] = useState(false);
+  const [colorMatchFillToggle, setColorMatchFillToggle] = useState(false);
   const [sizesActiveSelection, setSizesActiveSelection] = useState("size8");
   const [toolsActiveSelection, setToolsActiveSelection] = useState("pen-fill");
   const [pixelColor, setPixelColor] = useState("#ffffff");
@@ -32,11 +32,13 @@ function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
         toolsActiveSelection={toolsActiveSelection}
       >
         <div className="panel-wrapper">
+          {/* header */}
           <header>
             <img src={logoImg} alt="Logo" width="40px" />
             <h1>Pixel Art</h1>
           </header>
 
+          {/* reset */}
           <section>
             <button
               className="reset"
@@ -48,6 +50,8 @@ function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
               &#128472;
             </button>
           </section>
+
+          {/* size settings */}
 
           <section className="grid-size">
             <button
@@ -88,12 +92,14 @@ function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
             </button>
           </section>
 
+          {/* fill settings */}
+
           <div className="fill-type">
             <button
               className="pen-fill"
               onClick={() => {
-                setFillToggle(false);
-                setLayerFillToggle(false);
+                setBoxFillToggle(false);
+                setColorMatchFillToggle(false);
                 setToolsActiveSelection("pen-fill");
               }}
             >
@@ -101,26 +107,28 @@ function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
             </button>
 
             <button
-              className="neighbour-fill"
+              className="box-fill"
               onClick={() => {
-                setFillToggle(true);
-                setLayerFillToggle(false);
-                setToolsActiveSelection("neighbour-fill");
+                setBoxFillToggle(true);
+                setColorMatchFillToggle(false);
+                setToolsActiveSelection("box-fill");
               }}
             >
               <img src={bucketImg} alt="bucket" width="45px" />
             </button>
             <button
-              className="Layer-fill"
+              className="color-match-fill"
               onClick={() => {
-                setFillToggle(false);
-                setLayerFillToggle(true);
-                setToolsActiveSelection("Layer-fill");
+                setBoxFillToggle(false);
+                setColorMatchFillToggle(true);
+                setToolsActiveSelection("color-match-fill");
               }}
             >
               <img src={magicImg} alt="magic" width="40px" />
             </button>
           </div>
+
+          {/* eraser */}
 
           <section className="eraser">
             <button
@@ -134,6 +142,7 @@ function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
 
           <section className="color-selector">
             {/* react color library */}
+
             <CirclePicker
               onChangeComplete={(color) => setPixelColor(color.hex)}
             />
@@ -146,6 +155,7 @@ function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
 
           <section className="download">
             {/* react-component-export-image library */}
+
             <button onClick={() => exportComponentAsJPEG(GridEl)}>
               Download .jpg
             </button>
@@ -162,8 +172,8 @@ function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
           setMatrix={setMatrix}
           initialMatrix={initialMatrix}
           pixelColor={pixelColor}
-          fillToggle={fillToggle}
-          layerFillToggle={layerFillToggle}
+          boxFillToggle={boxFillToggle}
+          colorMatchFillToggle={colorMatchFillToggle}
         />
       </div>
     </div>

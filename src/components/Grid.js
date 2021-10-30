@@ -7,12 +7,12 @@ function Grid({
   pixelColor,
   matrix,
   setMatrix,
-  fillToggle,
-  layerFillToggle,
+  boxFillToggle,
+  colorMatchFillToggle,
 }) {
   const [coordinates, setCoordinates] = useState(null);
 
-  //fill algorithems
+  //The two fill algorithems
   useEffect(() => {
     if (coordinates !== null) {
       const x = coordinates.x;
@@ -23,8 +23,8 @@ function Grid({
 
       mDraft[x][y] = pixelColor;
 
-      //step fill algorithems
-      if (fillToggle === true) {
+      //box fill algorithems
+      if (boxFillToggle === true) {
         // top  Fill
         mDraft[x - 1] !== undefined &&
           mDraft[x - 1][y] === oldColor &&
@@ -65,36 +65,15 @@ function Grid({
           (mDraft[x][y + 1] = pixelColor);
       }
 
-      //layer fill algorithems
+      //color match fill algorithem
 
-      if (layerFillToggle === true) {
-        function halfFill(r) {
-          function quarterFill(y) {
-            mDraft[r] !== undefined &&
-              mDraft[r][y] === oldColor &&
-              (mDraft[r][y] = pixelColor);
-            return mDraft;
+      if (colorMatchFillToggle === true) {
+        for (let r = 0; r < mDraft.length; r++) {
+          const element = mDraft[r];
+
+          for (let c = 0; c < element.length; c++) {
+            element[c] === oldColor && (mDraft[r][c] = pixelColor);
           }
-          // fill left
-          for (let i = y - 1; i >= 0; i--) {
-            if (mDraft[x] === undefined && mDraft[x][i] !== oldColor) break;
-            quarterFill(i);
-          }
-          // fill right
-          for (let i = y; i < size; i++) {
-            if (mDraft[x] === undefined && mDraft[x][i] !== oldColor) break;
-            quarterFill(i);
-          }
-        }
-        // fill bottom
-        for (let r = x; r < size; r++) {
-          if (mDraft[r] === undefined && mDraft[r][y] !== oldColor) break;
-          halfFill(r);
-        }
-        // fill Top
-        for (let r = x; r >= 0; r--) {
-          if (mDraft[r] === undefined && mDraft[r][y] !== oldColor) break;
-          halfFill(r);
         }
       }
 
