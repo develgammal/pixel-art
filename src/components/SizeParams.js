@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SidePanel from "./SidePanel";
 
-function SizeControl() {
+function SizeControl({ setDarkMode, darkMode }) {
   const [size, setSize] = useState(8);
 
   let initialMatrix = [];
@@ -22,6 +22,8 @@ function SizeControl() {
       initialMatrix={initialMatrix}
       matrix={matrix}
       setMatrix={setMatrix}
+      setDarkMode={setDarkMode}
+      darkMode={darkMode}
     />
   );
 }

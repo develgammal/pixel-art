@@ -4,7 +4,7 @@ const StyledSidePanel = styled.div`
   .panel-wrapper {
     display: flex;
     flex-flow: column nowrap;
-    background-color: whitesmoke;
+    background-color: ${(props) => props.theme.fg};
     width: 30vw;
     padding: 20px;
     margin: 20px;
@@ -42,12 +42,16 @@ const StyledSidePanel = styled.div`
     border-radius: 10px;
     background-color: white;
   }
-  .reset {
+
+  .resets {
+    display: flex;
+    justify-content: space-between;
+  }
+  .page-reset {
     font-size: 2rem;
   }
-  .reset:hover {
-    background-color: #e91e63;
-    border: 5px solid #e91e63;
+  .theme {
+    font-size: 1.5rem;
   }
 
   .${(props) => props.sizesActiveSelection} {

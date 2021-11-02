@@ -15,7 +15,15 @@ import bucketImg from "../img/bucket.png";
 import magicImg from "../img/magic.png";
 import eraserImg from "../img/eraser.svg";
 
-function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
+function SidePanel({
+  size,
+  setSize,
+  initialMatrix,
+  matrix,
+  setMatrix,
+  setDarkMode,
+  darkMode,
+}) {
   const [boxFillToggle, setBoxFillToggle] = useState(false);
   const [colorMatchFillToggle, setColorMatchFillToggle] = useState(false);
   const [sizesActiveSelection, setSizesActiveSelection] = useState("size8");
@@ -38,16 +46,24 @@ function SidePanel({ size, setSize, initialMatrix, matrix, setMatrix }) {
             <h1>Pixel Art</h1>
           </header>
 
-          {/* reset */}
-          <section>
+          {/* page and theme resets */}
+          <section className="resets">
             <button
-              className="reset"
+              className="page-reset"
               onClick={() => {
                 setSize(8);
                 setMatrix(initialMatrix);
               }}
             >
               &#128472;
+            </button>
+            <button
+              className="theme"
+              onClick={() => {
+                darkMode === false ? setDarkMode(true) : setDarkMode(false);
+              }}
+            >
+              &#127768;
             </button>
           </section>
 

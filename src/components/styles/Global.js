@@ -18,6 +18,7 @@ html {
 }
 
 body {
+  background-color: ${(props) => props.theme.bg};
   font-family:cursive;
   width: 100%;
   height: 100vh;
@@ -52,7 +53,7 @@ img {
   height: auto;
 }
 
-button, input[type="submit"], input[type="reset"] {
+button {
 	background: none;
 	color: inherit;
 	border: none;
