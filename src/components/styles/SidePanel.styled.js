@@ -37,11 +37,6 @@ const StyledSidePanel = styled.div`
     margin: 2px;
     border-radius: 10px;
   }
-  button:hover {
-    border: 10px solid white;
-    border-radius: 10px;
-    background-color: white;
-  }
 
   .resets {
     display: flex;
