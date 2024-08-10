@@ -1,73 +1,66 @@
-# <a href="https://amropixelart.netlify.app/">Click here for Deployed Website Link</a>
+# [Deployed Website Link](https://amropixelart.netlify.app/)
 
-![demo](demo.gif)
+![App Demo](demo.gif)
 
-# Features
+## Welcome to the Pixel Art Creator!
 
-<br/>
+**Who doesn't love Pixel Art?** 🎨
+That's right—no one! Dive into the world of pixel art with this fun and easy-to-use tool.
 
-**Who doesn't like Pixel Art?	:bricks:**
-That's right! nobody in their right mind..
+You can choose your canvas size 📏, select your favorite colors 🎨, erase any mistakes ✂️, and when you're satisfied with your masterpiece, download it in your desired format 🖼️.
 
-Choose the size of your Pixel Canavas :straight_ruler:, pick your favourite colors :basket:, erase mistakes:scissors: then click download to download your awesome artistic piece in your desired format	:file_cabinet:..
+## Technologies and Frameworks
 
-**Box fill tool**
+**Grid Algorithm**
 
-Lets you color neighbouring pixels with the selected color:
+I had to write a low-level JS algorithm to handle grid logic in Grid.js since I couldn't find a lib that handles this kind of logic.
 
-<img src="demo2.gif" width="600" />
+**JavaScript / React.js**
 
-**Color-match fill tool**
+React.js is perfect for single-page applications like this one, where components are dynamically rendered, providing a smooth and responsive user experience.
 
-Lets you change background color as well as similar color patterns:
+## Third-Party Libraries
 
-<img src="demo3.gif" width="600" />
+**This project utilizes the following third-party libraries:**
 
-# Used technologies / Frameworks
-**javaScript / React.js**
+- **`react-color`:** Simplifies color selection by abstracting it into a user-friendly interface, saving you from creating repetitive buttons.
 
-React.js state handling model is ideal for single page applications, where components are selectively rendered on the same page
+- **`react-component-export-image`:** Allows you to export your pixel art grid as a downloadable image in various formats.
 
-# Used 3rd Party Libraries
-**I use the following 3rd party libraries in my project:**
+- **`styled-components`:** My go-to choice for writing dynamic styles in React. In this project, it helped avoid a tangled mess of conditional statements by enabling clean and maintainable styling.
 
-**"react-color":** abstracts the task of color selection instead of creating indvidual reptitive buttons
+## Getting Started with Create React App
 
-**"react-component-export-image":** enables exporting of App's Grid component as a downloadable image in different formats
-
-**"styled-components":** a general personal preference when writing React, and in this Project it was of immense help to dynamically render styles;
- saving my soul from a messy jungle of redundant conditional statements
- 
-# Getting Started with Create React App
+*Ensure you're using Node.js version 16.12.0 for the best compatibility.*
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
-### `npm install`
-installs required dev dependencies
+#### `npm install`
+Installs all the required dependencies.
 
-### `npm start`
+#### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The page will reload automatically if you make edits.
+You'll also see any lint errors in the console.
 
-### `npm test`
+#### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in interactive watch mode.
+For more information, see the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests).
 
-### `npm run build`
+#### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production in the `build` folder.
+It bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The build is minified, and the filenames include hashes.
+Your app will be ready for deployment!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For more details, refer to the [deployment documentation](https://facebook.github.io/create-react-app/docs/deployment).

@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
+// Commented code
 const GlobalStyles = createGlobalStyle`
 
 .wrapper{
@@ -7,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
   width: 100%;
   height: 100vh;
 }
+  
 //reset & body css
 html {
   box-sizing: border-box;
@@ -54,13 +56,13 @@ img {
 }
 
 button {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 `;
